@@ -1,0 +1,5 @@
+config/default.json
+node_modules
+sessions/*
+downloads
+fb-vision-bot-credentials.json
