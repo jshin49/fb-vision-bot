@@ -70,9 +70,9 @@ const PAGE_ID =
 
 // Get base URL of server
 const BASE_URL =
-  (process.env.BASE_URL) ?
-  (process.env.BASE_URL) :
-  config.get('baseURL');
+  (process.env.USE_HEROKU) ?
+  config.get('herokuBaseURL') :
+  config.get('ngrokBaseURL');
 
 if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN)) {
   console.error("Missing config values");

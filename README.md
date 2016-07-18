@@ -26,6 +26,8 @@ Second, mkdir config and add a default.json inside config with the following con
 
 ```javascript
 {
+  "herokuBaseUrl": "YOUR HEROKU URL WITH TRAILING SLASH",
+  "ngrokBaseUrl": "YOUR NGROK URL WITH TRAILING SLASH",
   "projectID": "YOUR GOOGLE CLOUD PROJECT ID",
   "pageID": "YOUR PAGE ID",
   "validationToken": "YOUR OWN TOKEN" (by default, "just_do_it")
@@ -62,6 +64,7 @@ Follow the instructions of this: [EasyImage](https://github.com/hacksparrow/node
 4. Give https://yourheroku.herokuapp.com/webhook for your webhook verificaiton URL in the Messenger App settings
 5. Voila :)
 6. Alternatively, you can connect your herokuapp to GitHub, and set it to automatically deploy whenever a commit is made.
+p.s. Add the following url to the buildpack lists on heroku : https://github.com/mojodna/heroku-buildpack-cairo.git
 
 Or you can simply click
 
