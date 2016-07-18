@@ -1,7 +1,7 @@
 # fb-vision-bot
 Facebook Messenger Bot that consumes Google Cloud Vision API and provides insights on images.
 
-This bot integrates a NLP platform Wit.ai with Facebook Messenger to provide a richer and smarter user experience.
+@TODO: This bot will integrate the NLP platform Wit.ai or Api.ai with Facebook Messenger to provide a richer and smarter user experience.
 
 Features of Google Cloud Vision API are the following:
 
@@ -68,4 +68,4 @@ p.s. Add the following url to the buildpack lists on heroku : https://github.com
 
 Or you can simply click
 
-(Will add deploy to heroku button here later)
+@TODO: (Will add deploy to heroku button here later)
