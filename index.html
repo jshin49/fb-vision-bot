@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Facebook Vision Bot by jshin49</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Facebook Vision Bot</h1>
+      <h2 class="project-tagline">Facebook Messenger bot that processes images through Google Cloud Vision API</h2>
+      <a href="https://github.com/jshin49/fb-vision-bot" class="btn">View on GitHub</a>
+      <a href="https://github.com/jshin49/fb-vision-bot/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/jshin49/fb-vision-bot/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="fb-vision-bot" class="anchor" href="#fb-vision-bot" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>fb-vision-bot</h1>
+
+<p>Facebook Messenger Bot that consumes Google Cloud Vision API and provides insights on images.</p>
+
+<p><a href="https://github.com/TODO" class="user-mention">@TODO</a>: This bot will integrate the NLP platform Wit.ai or Api.ai with Facebook Messenger to provide a richer and smarter user experience.</p>
+
+<p>Features of Google Cloud Vision API are the following:</p>
+
+<ul>
+<li>Face Detection
+
+<ul>
+<li>Detect multiple faces within an image, along with the associated key facial attributes like emotional state or wearing headwear. Facial Recognition is not supported.</li>
+</ul>
+</li>
+<li>Label Detection
+
+<ul>
+<li>Detects broad sets of categories within an image, ranging from modes of transportation to animals.</li>
+</ul>
+</li>
+<li>Landmark Detection
+
+<ul>
+<li>Detect popular natural and man-made structures within an image.</li>
+</ul>
+</li>
+<li>Logo Detection
+
+<ul>
+<li>Detect popular product logos within an image.</li>
+</ul>
+</li>
+<li>Optical Character Recognition
+
+<ul>
+<li>Detect and extract text within an image, with support for a broad range of languages, along with support for automatic language identification.</li>
+</ul>
+</li>
+<li>Explicit Content Detection
+
+<ul>
+<li>Detect explicit content like adult content or violent content within an image.</li>
+</ul>
+</li>
+<li>Image Attributes
+
+<ul>
+<li>Detect general attributes of the image, such as dominant color.</li>
+</ul>
+</li>
+</ul>
+
+<p>First, check out the <a href="https://developers.facebook.com/docs/messenger-platform/quickstart">Quickstart Guide</a> provided by Facebook.</p>
+
+<p>Second, mkdir config and add a default.json inside config with the following contents:</p>
+
+<div class="highlight highlight-source-js"><pre>{
+  <span class="pl-s"><span class="pl-pds">"</span>herokuBaseUrl<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>YOUR HEROKU URL WITH TRAILING SLASH<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>ngrokBaseUrl<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>YOUR NGROK URL WITH TRAILING SLASH<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>projectID<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>YOUR GOOGLE CLOUD PROJECT ID<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>pageID<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>YOUR PAGE ID<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>validationToken<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>YOUR OWN TOKEN<span class="pl-pds">"</span></span> (by <span class="pl-k">default</span>, <span class="pl-s"><span class="pl-pds">"</span>just_do_it<span class="pl-pds">"</span></span>)
+  <span class="pl-s"><span class="pl-pds">"</span>appSecret<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>YOUR APP SECRET<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>pageAccessToken<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>YOUR PAGEACCESS TOKEN<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>validationToken<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>YOUR VALIDATION TOKEN<span class="pl-pds">"</span></span>
+}</pre></div>
+
+<p>Third, since you have to install node-canvas for image processing, follow the instructions from here: <a href="https://github.com/Automattic/node-canvas">Node-canvas</a></p>
+
+<p>Finally, if you are on Windows, JPEG support doesn't work correctly with node-canvas. Therefore you have to use ImageMagick to manually convert .jpg to .png.
+Follow the instructions of this: <a href="https://github.com/hacksparrow/node-easyimage">EasyImage</a></p>
+
+<h2>
+<a id="running-locally" class="anchor" href="#running-locally" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running Locally</h2>
+
+<ol>
+<li>Install Node.js, NPM, and <a href="https://ngrok.com/">ngrok</a> (or <a href="https://localtunnel.me/">localtunnel</a>)</li>
+<li>Run "sudo npm install" command to install external modules locally</li>
+<li>Run "node app.js" to run the app</li>
+<li>Enter localhost:8080 on the web url to check (All static files are served in the 'public' folder)</li>
+<li>Enter ngrok http 8080 to tunnel a connection from <a href="https://foo.ngrok.io">https://foo.ngrok.io</a> to localhost</li>
+<li>Give <a href="https://foo.ngrok.io/webhook">https://foo.ngrok.io/webhook</a> for your webhook verificaiton URL in the Messenger App settings</li>
+<li>Now for every message, you can check the response and request through your console.</li>
+</ol>
+
+<h2>
+<a id="running-on-heroku" class="anchor" href="#running-on-heroku" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running on Heroku</h2>
+
+<ol>
+<li>Do steps 0~1 from above and install Heroku toolbelt from the Heroku website</li>
+<li>Run "heroku login"</li>
+<li>If existing repository, simply add a remote to heroku with this command: heroku git:remote -a YOUR_HEROKU_APP</li>
+<li>
+<p>Else, run the following codes</p>
+
+<ul>
+<li>heroku git:clone -a image-bot-test &amp;&amp; cd image-bot-test</li>
+<li>git add . &amp;&amp; git commit -am "make it better" &amp;&amp; git push heroku master</li>
+</ul>
+</li>
+<li><p>Give <a href="https://yourheroku.herokuapp.com/webhook">https://yourheroku.herokuapp.com/webhook</a> for your webhook verificaiton URL in the Messenger App settings</p></li>
+<li>Voila :)</li>
+<li>Alternatively, you can connect your herokuapp to GitHub, and set it to automatically deploy whenever a commit is made.
+p.s. Add the following url to the buildpack lists on heroku : <a href="https://github.com/mojodna/heroku-buildpack-cairo.git">https://github.com/mojodna/heroku-buildpack-cairo.git</a>
+</li>
+</ol>
+
+<p>Or you can simply click</p>
+
+<p><a href="https://github.com/TODO" class="user-mention">@TODO</a>: (Will add deploy to heroku button here later)</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/jshin49/fb-vision-bot">Facebook Vision Bot</a> is maintained by <a href="https://github.com/jshin49">jshin49</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
