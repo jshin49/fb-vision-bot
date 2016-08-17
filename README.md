@@ -32,8 +32,7 @@ Second, mkdir config and add a default.json inside config with the following con
   "pageID": "YOUR PAGE ID",
   "validationToken": "YOUR OWN TOKEN" (by default, "just_do_it")
   "appSecret": "YOUR APP SECRET",
-  "pageAccessToken": "YOUR PAGEACCESS TOKEN",
-  "validationToken": "YOUR VALIDATION TOKEN"
+  "pageAccessToken": "YOUR PAGEACCESS TOKEN"
 }
 ```
 
