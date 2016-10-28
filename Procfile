@@ -1,1 +1,1 @@
-web: USE_HEROKU=true node app.js
+web: node app.js

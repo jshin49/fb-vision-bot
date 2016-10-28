@@ -13,7 +13,7 @@
 // @TODO: set cases for other modes
 // @TODO: check for other modes and process accordingly. Check for session first
 // @TODO: polish for github -> in progress
-// @TODO: run cleanups for session ids or put them into a database -> very far far later. maybe never
+// @TODO: run cleanups for session ids or put them into a database -> very far far later. maybe never since this is just for fun
 // @TODO: Fix the 'others' button -> done
 
 const
@@ -70,7 +70,7 @@ const PAGE_ID =
 
 // Get base URL of server
 const BASE_URL =
-  (process.env.USE_HEROKU) ?
+  (config.get('herokuBaseURL') != "") ?
   config.get('herokuBaseURL') :
   config.get('ngrokBaseURL');
 
@@ -138,39 +138,6 @@ function processImage(senderID, operationType) {
       break;
 
     case "landmark_detection":
-      // easyimg.convert({src:'sessions/'+senderID+'/'+senderID+'_'+operationType+'.jpg', dst:'sessions/'+senderID+'/'+senderID+'_'+operationType+'.png', quality:100})
-      // .then(function() {
-      //   vision.detectLandmarks('sessions/'+senderID+'/'+senderID+'_'+operationType+'.png', (err, landmarks) => {
-      //     if (err) {
-      //       console.log('Failed to detect landmarks.');
-      //     }
-      //     else {
-      //       console.log(landmarks);
-      //       vision.highlight('sessions/'+senderID+'/'+senderID+'_'+operationType+'.png', landmarks,'sessions/'+senderID+'/'+operationType+'.png', operationType, (err) => {
-      //         if (err) {
-      //           console.log("Failed to highlight landmarks.")
-      //         }
-      //         else {
-      //          fs.stat('sessions/'+senderID+'/'+operationType+'.png', (err, stats) => {
-      //             if (err) console.error('landmark_detection.png does not exist');
-      //             else {
-      //               if (stats.isFile()){
-      //                 console.log(operationType+'.png found');
-      //                 sendImageMessage(senderID, senderID+'/'+operationType+'.png');
-      //                 var message = "Detected landmarks: ";
-      //                 landmarks.forEach((landmark) => {
-      //                   console.log('Found landmark: ' + landmark.desc);
-      //                   message += "'"+landmark.desc+"'"+ " "
-      //                 });
-      //                 sendTextMessage(senderID, message);
-      //               }
-      //             }
-      //           });
-      //         }
-      //       });
-      //     }
-      //   });
-      // });
       vision.detectLandmarks('sessions/'+senderID+'/'+senderID+'_'+operationType+'.jpg', (err, landmarks) => {
         if (err) {
           console.error(err);
@@ -426,7 +393,7 @@ function receivedMessage(event) {
     // keywords and send back the corresponding example. Otherwise, just echo
     // the text we received.
     switch (messageText) {
-      // @TODO: Implement Wit.ai or Api.ai to save all this trouble
+      // @TODO: Implement Api.ai to save all this trouble
 
       case 'Help':
       case 'help':
@@ -437,6 +404,8 @@ function receivedMessage(event) {
         sendTextMessage(senderID, "Set a mode you want from the menu. You can also type as following: 'Face Detection' or 'Landmark Detection'. After you set the mode, send an image you want to process, and Voila!");
         break;
 
+      case 'Face':
+      case 'face':
       case 'Face Detection':
       case 'Face detection':
       case 'face detection':
@@ -449,6 +418,8 @@ function receivedMessage(event) {
         });
       break;
 
+      case 'Object':
+      case 'object':
       case 'Object Detection':
       case 'Object detection':
       case 'object detection':
@@ -461,6 +432,8 @@ function receivedMessage(event) {
         });
       break;
 
+      case 'Landmark':
+      case 'landmark':
       case 'Landmark Detection':
       case 'Landmark detection':
       case 'landmark detection':
@@ -473,6 +446,8 @@ function receivedMessage(event) {
         });
       break;
 
+      case 'Logo':
+      case 'logo':
       case 'Logo Detection':
       case 'Logo detection':
       case 'logo detection':
@@ -485,6 +460,8 @@ function receivedMessage(event) {
         });
       break;
 
+      case 'Text':
+      case 'text':
       case 'Text Detection':
       case 'Text detection':
       case 'text detection':
@@ -515,6 +492,7 @@ function receivedMessage(event) {
 
       case 'Image Properties':
       case 'Image properties':
+      case 'image Properties':
       case 'image properties':
         util.writeSession('image_properties', senderID, (err) => {
           if (err) {
@@ -729,7 +707,7 @@ function sendMenuOthersMessage(recipientId, messageText) {
  *
  */
 function sendImageMessage(recipientId, imageFile) {
-  var baseUrl = BASE_URL;
+  var baseUrl = BASE_URL+'static/';
   var url = baseUrl + imageFile;
   var messageDataTemplate = {
     recipient: {

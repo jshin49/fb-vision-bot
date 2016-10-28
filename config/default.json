@@ -1,0 +1,10 @@
+{
+  "herokuBaseUrl": "YOUR HEROKU URL WITH TRAILING SLASH (Leave it as empty string if not used)",
+  "ngrokBaseUrl": "YOUR NGROK URL WITH TRAILING SLASH (Leave it as empty string if not used)",
+  "projectID": "YOUR GOOGLE CLOUD PROJECT ID",
+  "pageID": "YOUR PAGE ID",
+  "validationToken": "just_do_it",
+  "appSecret": "YOUR APP SECRET",
+  "pageAccessToken": "YOUR PAGEACCESS TOKEN",
+  "validationToken": "YOUR VALIDATION TOKEN"
+}
