@@ -32,7 +32,8 @@ Second, mkdir config and add a default.json inside config with the following con
   "pageID": "YOUR PAGE ID",
   "validationToken": "YOUR OWN TOKEN" (by default, "just_do_it")
   "appSecret": "YOUR APP SECRET",
-  "pageAccessToken": "YOUR PAGEACCESS TOKEN"
+  "pageAccessToken": "YOUR PAGEACCESS TOKEN",
+  "validationToken": "YOUR VALIDATION TOKEN"
 }
 ```
 
@@ -42,7 +43,7 @@ Finally, if you are on Windows, JPEG support doesn't work correctly with node-ca
 Follow the instructions of this: [EasyImage](https://github.com/hacksparrow/node-easyimage)
 
 
-## Running Locally
+## Running Locally or on AWS
 0. Install Node.js, NPM, and [ngrok](https://ngrok.com/) (or [localtunnel](https://localtunnel.me/))
 1. Run "sudo npm install" command to install external modules locally
 2. Run "node app.js" to run the app
@@ -57,7 +58,7 @@ Follow the instructions of this: [EasyImage](https://github.com/hacksparrow/node
 2. If existing repository, simply add a remote to heroku with this command: heroku git:remote -a YOUR_HEROKU_APP
 3. Else, run the following codes
 
-  - heroku git:clone -a image-bot-test && cd image-bot-test
+  - heroku git:clone -a fb-vision-bot && cd fb-vision-bot
   - git add . && git commit -am "make it better" && git push heroku master
 
 4. Give https://yourheroku.herokuapp.com/webhook for your webhook verificaiton URL in the Messenger App settings
