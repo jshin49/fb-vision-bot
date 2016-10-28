@@ -41,6 +41,8 @@ Second, mkdir config and add a default.json inside config with the following con
 
 Third, since you have to install node-canvas for image processing, follow the instructions from here: [Node-canvas](https://github.com/Automattic/node-canvas)
 
+Fourth, then enable Google Cloud Vision and get your API credentials by following their guide. Name the credentials file as 'fb-vision-bot-credentials.json' and place it in the project file.
+
 Finally, if you are on Windows, JPEG support doesn't work correctly with node-canvas. Therefore you have to use ImageMagick to manually convert .jpg to .png.
 Follow the instructions of this: [EasyImage](https://github.com/hacksparrow/node-easyimage)
 
