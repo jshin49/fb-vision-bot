@@ -1,6 +1,8 @@
 # fb-vision-bot
 Facebook Messenger Bot that consumes Google Cloud Vision API and provides insights on images.
 
+You can try it out on the following [Facebook Page](https://www.facebook.com/Google-Cloud-Vision-Bot-1820906991461911/), and start by saying Hi to it.
+
 @TODO: This bot will integrate the NLP platform Api.ai with Facebook Messenger to provide a richer and smarter user experience.
 
 Features of Google Cloud Vision API are the following:
