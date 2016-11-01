@@ -55,6 +55,10 @@ Follow the instructions of this: [EasyImage](https://github.com/hacksparrow/node
 4. Enter ngrok http 8080 to tunnel a connection from https://foo.ngrok.io to localhost
 5. Give https://foo.ngrok.io/webhook for your webhook verificaiton URL in the Messenger App settings
 6. Now for every message, you can check the response and request through your console.
+7. In order to add the persistent menu function for your messenger, please run the following command:
+  ```javascript
+  INIT=true node threads.js
+  ```
 
 ## Running on Heroku
 0. Do steps 0~1 from above and install Heroku toolbelt from the Heroku website
